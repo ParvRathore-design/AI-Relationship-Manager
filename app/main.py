@@ -99,6 +99,9 @@ from pydantic import BaseModel, Field
 
 class CustomerData(BaseModel):
 
+    model_config = ConfigDict(
+        populate_by_name=True
+    )
     CustomerID: str
 
     Gender: str
