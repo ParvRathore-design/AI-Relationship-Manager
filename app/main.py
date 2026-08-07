@@ -95,29 +95,49 @@ def startup_event():
 # Request Schema
 # ==========================================
 
+from pydantic import BaseModel, Field
+
 class CustomerData(BaseModel):
 
     CustomerID: str
 
     Gender: str
-    Senior_Citizen: str
+
+    Senior_Citizen: str = Field(alias="Senior Citizen")
+
     Partner: str
+
     Dependents: str
-    Tenure_Months: int
-    Phone_Service: str
-    Multiple_Lines: str
-    Internet_Service: str
-    Online_Security: str
-    Online_Backup: str
-    Device_Protection: str
-    Tech_Support: str
-    Streaming_TV: str
-    Streaming_Movies: str
+
+    Tenure_Months: int = Field(alias="Tenure Months")
+
+    Phone_Service: str = Field(alias="Phone Service")
+
+    Multiple_Lines: str = Field(alias="Multiple Lines")
+
+    Internet_Service: str = Field(alias="Internet Service")
+
+    Online_Security: str = Field(alias="Online Security")
+
+    Online_Backup: str = Field(alias="Online Backup")
+
+    Device_Protection: str = Field(alias="Device Protection")
+
+    Tech_Support: str = Field(alias="Tech Support")
+
+    Streaming_TV: str = Field(alias="Streaming TV")
+
+    Streaming_Movies: str = Field(alias="Streaming Movies")
+
     Contract: str
-    Paperless_Billing: str
-    Payment_Method: str
-    Monthly_Charges: float
-    Total_Charges: float
+
+    Paperless_Billing: str = Field(alias="Paperless Billing")
+
+    Payment_Method: str = Field(alias="Payment Method")
+
+    Monthly_Charges: float = Field(alias="Monthly Charges")
+
+    Total_Charges: float = Field(alias="Total Charges")
 
 
 # ==========================================
@@ -284,7 +304,9 @@ def predict(customer: CustomerData):
         raise HTTPException(status_code=503, detail="Model not loaded. Check server logs.")
 
     try:
-        input_df = pd.DataFrame([customer.model_dump()])
+        input_df = pd.DataFrame(
+                [customer.model_dump(by_alias=True)]
+        )
         model_input = input_df.drop(columns=["CustomerID"])
 
         # Transform once, reuse for both prediction and SHAP
