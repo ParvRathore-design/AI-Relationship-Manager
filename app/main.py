@@ -4,6 +4,7 @@ FastAPI Backend
 """
 
 from pathlib import Path
+from pydantic import BaseModel, Field, ConfigDict
 
 import joblib
 import numpy as np
