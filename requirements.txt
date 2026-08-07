@@ -1,0 +1,52 @@
+# ==============================
+# AI Relationship Manager
+# Requirements
+# ==============================
+
+# Core Data Science
+numpy==2.0.2
+pandas==2.2.3
+scipy==1.14.1
+
+# Machine Learning
+scikit-learn==1.6.1
+xgboost==2.1.1
+joblib==1.4.2
+
+# Explainable AI
+shap==0.46.0
+
+# Visualization
+matplotlib==3.9.2
+seaborn==0.13.2
+plotly==5.24.1
+
+# FastAPI Backend
+fastapi==0.115.5
+uvicorn[standard]==0.32.0
+python-multipart==0.0.17
+pydantic==2.10.2
+
+# Dashboard
+streamlit==1.40.2
+
+# Utilities
+python-dotenv==1.0.1
+requests==2.32.3
+
+# Optional AI Assistant
+openai>=1.58.1
+
+# Optional Google Gemini
+google-generativeai==0.8.3
+
+# Development
+notebook==7.2.2
+ipykernel==6.29.5
+jupyterlab==4.3.1
+
+# Optional PDF Reports
+reportlab==4.2.5
+
+# Optional Image Export
+kaleido==0.2.1
